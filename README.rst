@@ -6,3 +6,5 @@ colorterm is a package to write some formatted message in your terminal. It supp
     * formatting like underline, bold, ...
     * color
     * background color
+
+`Read the documentation <http://colorterm.readthedocs.org/en/latest/>`_
