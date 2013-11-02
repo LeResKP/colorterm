@@ -10,7 +10,7 @@ setup(name='colorterm/',
 """,
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       keywords='',
-      author='Aurélien Matouillot',
+      author='Aur\xc3\xa9lien Matouillot',
       author_email='a.matouillot@gmail.com',
       url='',
       license='',
