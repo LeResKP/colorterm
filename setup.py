@@ -10,17 +10,23 @@ except ImportError:
 
 version = '0.0'
 
-setup(name='colorterm/',
+setup(name='colorterm',
       version=version,
-      description="",
-      long_description="""\
-""",
-      classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      description="Write formatted message in your terminal",
+      long_description=open('README.rst').read().split('Build Status')[0],
+      classifiers=[
+        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Intended Audience :: Developers',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+      ],
       keywords='',
       author='Aur\xc3\xa9lien Matouillot',
       author_email='a.matouillot@gmail.com',
-      url='',
-      license='',
+      url='https://github.com/LeResKP/colorterm',
+      license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
