@@ -107,11 +107,3 @@ You can use the formatting and colors like you want.
 
     The above example will render: <span style="background-color: yellow;"><span style="color: red">Hello</span> <span style="text-decoration: underline">world</span></span>
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
