@@ -1,3 +1,4 @@
+import sys
 # Bash colors:
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting
 
@@ -67,9 +68,15 @@ for k, v in FORMATTINGS.items():
     FORMATTER_COLORS[k] = ANSI_FORMAT % v
     FORMATTER_COLORS['/%s' % k] = ANSI_FORMAT % (v + 20)
 
+NO_TTY_FORMATTER_COLORS = {}
+for k, v in FORMATTER_COLORS.items():
+    NO_TTY_FORMATTER_COLORS[k] = ''
 
 def formatter(s):
-    return '%s%s' % (s.format(**FORMATTER_COLORS), (ANSI_FORMAT % 0))
+    if  sys.stdout.isatty():
+        return '%s%s' % (s.format(**FORMATTER_COLORS), (ANSI_FORMAT % 0))
+    # Not a tty, we remove the formatting
+    return s.format(**NO_TTY_FORMATTER_COLORS)
 
 
 def parse_attr(attr):
@@ -100,6 +107,9 @@ def parse_attr(attr):
 
 
 def applycolor(text, formatting=None, bgcolor=None, fgcolor=None):
+    if not sys.stdout.isatty():
+        # Not a tty, we don't apply any rendering
+        return text
     lis = filter(bool, [formatting, bgcolor, fgcolor])
     if not lis:
         return text

@@ -107,3 +107,30 @@ You can use the formatting and colors like you want.
 
     The above example will render: <span style="background-color: yellow;"><span style="color: red">Hello</span> <span style="text-decoration: underline">world</span></span>
 
+
+Output redirection
+==================
+
+colorterm supports correctly the output redirection to another program. Example with the a python file named test.py which contains::
+
+
+    from colorterm import colorterm
+    print colorterm.underline('Hello world')
+
+
+::
+
+    $ python test.py
+
+.. raw:: html
+
+    The above example will render: <span style="text-decoration: underline">Hello world</span>
+
+
+Now redirect the output to a less::
+
+    $ python test.py | less
+
+.. raw:: html
+
+    We will have displayed in the less 'Hello world' without any special characters nor formatting
