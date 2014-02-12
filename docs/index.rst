@@ -134,3 +134,211 @@ Now redirect the output to a less::
 .. raw:: html
 
     We will have displayed in the less 'Hello world' without any special characters nor formatting
+
+
+Table formatting
+================
+
+colorterm support to display table as output::
+
+    from colorterm import Table
+    table = Table('ID', 'Name')
+    rows = [('id1', 'name1'), ('id2', 'name2')]
+    for ident, name in rows:
+        table.add_row({
+            'ID': ident,
+            'Name': name,
+        })
+    print table.display()
+
+
+It will display the following table in your shell:
+
+    .. raw:: html
+
+        <table>
+        <tr>
+        <td style="text-decoration: underline;">ID </td><td style="text-decoration: underline;"> Name </td>
+        </tr><tr>
+        <td>id1</td><td> name1</td>
+        </tr><tr>
+        <td>id2</td><td> name2</td>
+        </tr>
+        </table>
+
+
+Table options
+-------------
+
+    ``column_separator``
+
+        Default: '  '. The column separator, you can put ' | ' for example.
+
+    ``header_convert``
+
+        Default: colorterm.underline. A function to apply on the display of the header.
+
+
+    Example::
+
+        from colorterm import Table, colorterm
+        table = Table('ID', 'Name', column_separator = ' | ', header_convert=colorterm.red_underline)
+        rows = [('id1', 'name1'), ('id2', 'name2')]
+        for ident, name in rows:
+            table.add_row({
+                'ID': ident,
+                'Name': name,
+            })
+        print table.display()
+
+
+    Output:
+
+    .. raw:: html
+
+        <table>
+        <tr>
+        <td style="text-decoration: underline; color: red;">ID </td>
+        <td>|</td>
+        <td style="text-decoration: underline; color: red;"> Name </td>
+        </tr><tr>
+        <td>id1</td>
+        <td> | </td>
+        <td>name1</td>
+        </tr><tr>
+        <td>id2</td>
+        <td> | </td>
+        <td>name2</td>
+        </tr>
+        </table>
+
+
+
+Column options
+--------------
+
+    ``convert``
+
+        Default: None. A function to apply formatting on the cells from this column
+
+    ``align``
+
+        Default: 'left'. Where to display the text of the cells from this column.
+        One of 'left' or 'right'.
+
+
+    Example::
+
+        from colorterm import Table, colorterm
+        table = Table('ID',
+                      {'name': 'Name',
+                      'convert': colorterm.red,
+                      'align': 'right'})
+        rows = [('id1', 'name1'), ('id2', 'name2')]
+        for ident, name in rows:
+            table.add_row({
+                'ID': ident,
+                'Name': name,
+            })
+        print table.display()
+
+
+    Output:
+
+    .. raw:: html
+
+        <table>
+        <tr>
+        <td style="text-decoration: underline;">ID</td>
+        <td style="text-decoration: underline; color: red; text-align: right;">Name</td>
+        </tr><tr>
+        <td>id1</td>
+        <td style="color: red; text-align: right;">name1</td>
+        </tr><tr>
+        <td>id2</td>
+        <td style="color: red; text-align: right;">name2</td>
+        </tr>
+        </table>
+
+
+Cell options
+------------
+
+    ``convert``
+
+        Default: None. A function to appy formatting to the cell
+
+    ``align``
+
+        Default: 'left'. Where to display the text. One of 'left', 'right'.
+
+
+    Example::
+
+        from colorterm import Table, colorterm
+        table = Table('ID', 'Long name')
+        rows = [
+            ('id1', {
+                'value': 'name1',
+                'convert': colorterm.red,
+                'align': 'right'}),
+            ('id2', 'name2')]
+        for ident, name in rows:
+            table.add_row({
+                'ID': ident,
+                'Long name': name,
+            })
+        print table.display()
+
+
+    Output:
+
+    .. raw:: html
+
+        <table>
+        <tr>
+        <td style="text-decoration: underline;">ID </td><td style="text-decoration: underline;">Long name </td>
+        </tr><tr>
+        <td>id1</td><td style="color: red; text-align: right;"> name1</td>
+        </tr><tr>
+        <td>id2</td><td> name2</td>
+        </tr>
+        </table>
+
+
+Row options
+-----------
+
+    ``convert``
+
+        Default: None. A function to appy formatting to the row
+
+
+    Example::
+
+        from colorterm import Table, colorterm
+        table = Table('ID', 'Name')
+        rows = [
+            ('id1', 'name1'),
+            ('id2', 'name2')]
+        for ident, name in rows:
+            table.add_row({
+                'ID': ident,
+                'Name': name,
+            }, convert=colorterm.red)
+        print table.display()
+
+
+    Output:
+
+    .. raw:: html
+
+        <table>
+        <tr>
+        <td style="text-decoration: underline;">ID </td><td style="text-decoration: underline;">Name </td>
+        </tr><tr>
+        <td style="color: red;">id1</td><td> name1</td>
+        </tr><tr>
+        <td style="color: red;">id2</td><td> name2</td>
+        </tr>
+        </table>
