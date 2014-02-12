@@ -72,8 +72,9 @@ NO_TTY_FORMATTER_COLORS = {}
 for k, v in FORMATTER_COLORS.items():
     NO_TTY_FORMATTER_COLORS[k] = ''
 
+
 def formatter(s):
-    if  sys.stdout.isatty():
+    if sys.stdout.isatty():
         return '%s%s' % (s.format(**FORMATTER_COLORS), (ANSI_FORMAT % 0))
     # Not a tty, we remove the formatting
     return s.format(**NO_TTY_FORMATTER_COLORS)
