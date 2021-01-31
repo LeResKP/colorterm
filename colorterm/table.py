@@ -18,7 +18,7 @@ class Cell(Display):
     def __init__(self, colobj, **kw):
         super(Cell, self).__init__(**kw)
         self.colobj = colobj
-        self.value = unicode(kw['value'] if kw['value'] is not None else '')
+        self.value = kw['value'] if kw['value'] is not None else ''
         self.colobj.set_max_width(len(self.value))
 
     @property
@@ -27,7 +27,7 @@ class Cell(Display):
 
     @property
     def converts(self):
-        return filter(bool, [self.colobj._convert, self._convert])
+        return list(filter(bool, [self.colobj._convert, self._convert]))
 
     def display(self, convert=None):
         width = self.colobj.max_width
@@ -120,4 +120,4 @@ if __name__ == '__main__':
         }
         t.add_row(dic)
 
-    print t.display()
+    print(t.display())

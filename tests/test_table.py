@@ -84,7 +84,7 @@ class TestTable(unittest.TestCase):
         try:
             table = Table({'align': 'right'}, 'col2')
             assert(False)
-        except Exception, e:
+        except Exception as e:
             self.assertEqual(str(e), 'Column name is not defined')
 
     def test_add_row(self):

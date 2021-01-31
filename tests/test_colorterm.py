@@ -85,13 +85,13 @@ class TestColorTerm(unittest.TestCase):
         try:
             parse_attr('unexisting_on_green')
             assert(False)
-        except Exception, e:
+        except Exception as e:
             self.assertEqual(str(e), 'Bad attribute: unexisting')
 
         try:
             parse_attr('red_on_unexisting')
             assert(False)
-        except Exception, e:
+        except Exception as e:
             self.assertEqual(str(e), 'Bad background color: unexisting')
 
     def test_applycolor(self):

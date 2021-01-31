@@ -111,7 +111,7 @@ def applycolor(text, formatting=None, bgcolor=None, fgcolor=None):
     if not sys.stdout.isatty():
         # Not a tty, we don't apply any rendering
         return text
-    lis = filter(bool, [formatting, bgcolor, fgcolor])
+    lis = list(filter(bool, [formatting, bgcolor, fgcolor]))
     if not lis:
         return text
     reset = ANSI_FORMAT % 0
